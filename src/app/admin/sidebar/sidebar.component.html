@@ -1,0 +1,28 @@
+<div class="sidebar">
+    <h3 style="text-align: center;">Admin Panel</h3>
+    <hr />
+    <nav>
+        <ul class="navList">
+            <li class="navItem">
+                <a routerLink="/admin" routerLinkActive="active" class="hoverEffect" [routerLinkActiveOptions]="{ exact: true }">
+                    <i class="fa fa-tachometer"></i> <span class="slidebarItemName">Dashboard</span>
+                </a>
+            </li>
+            <li class="navItem">
+                <a routerLink="/admin/users" routerLinkActive="active" class="hoverEffect">
+                    <i class="fa fa-users"></i> <span class="slidebarItemName">Users</span>
+                </a>
+            </li>
+            <li class="navItem">
+                <a routerLink="/admin/add-car" routerLinkActive="active" class="hoverEffect">
+                    <i class="fa fa-plus"></i> <span class="slidebarItemName">Add Car</span>
+                </a>
+            </li>
+            <li class="navItem">
+                <a routerLink="/admin/car-manage" routerLinkActive="active" class="hoverEffect">
+                    <i class="fa fa-car"></i> <span class="slidebarItemName">Car Management</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,91 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-width: 300px;
+}
+
+.login-heading {
+    font-size: 30px;
+    margin-bottom: 24px;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 0;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.autofill-blocker {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.inputFeild {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.errorMsg {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.Btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.Btn:hover {
+    background-color: #0056b3;
+}
+
+.Btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.footer-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #333;
+}
+
+.footer-text a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}

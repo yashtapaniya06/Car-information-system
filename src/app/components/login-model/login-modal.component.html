@@ -1,0 +1,61 @@
+<div class="login-container">
+    <h4 class="login-heading">Login to Your Account</h4>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" autocomplete="off">
+        <input class="autofill-blocker" type="text" autocomplete="username" tabindex="-1" aria-hidden="true" />
+        <input class="autofill-blocker" type="password" autocomplete="current-password" tabindex="-1"
+            aria-hidden="true" />
+
+        <!-- EMAIL -->
+        <div class="form-group">
+            <input #emailInput type="email" placeholder="Enter Email" class="inputFeild" formControlName="email"
+                autocomplete="off" autocapitalize="off" spellcheck="false" name="login-email" />
+
+            <span class="errorMsg"
+                *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+
+                <span *ngIf="loginForm.get('email')?.errors?.['required']">
+                    Email is required
+                </span>
+
+                <span *ngIf="loginForm.get('email')?.errors?.['email']">
+                    Enter a valid email address
+                </span>
+            </span>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+            <input #passwordInput type="password" placeholder="Password" class="inputFeild" formControlName="password"
+                autocomplete="off" name="login-password" />
+
+            <span class="errorMsg"
+                *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                Password is required
+            </span>
+        </div>
+
+        <!-- ERROR MESSAGE FROM FIREBASE -->
+        <div *ngIf="errorMessage" class="errorMsg">
+            {{ errorMessage }}
+        </div>
+
+        <!-- LOGIN BUTTON -->
+        <button type="submit" class="Btn" [disabled]="isLoading" (click)="onSubmit()">
+
+            {{ isLoading ? 'Logging in...' : 'Login' }}
+        </button>
+
+    </form>
+
+    <div class="footer-text">
+        <p>
+            By Continuing I accept the Privacy Policy, Terms & Conditions.
+        </p>
+
+        <p>
+            Don't have an account?
+            <a routerLink="/signUp" (click)="closeModal.emit()">Sign up</a>
+        </p>
+    </div>
+</div>

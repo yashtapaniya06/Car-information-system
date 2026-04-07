@@ -1,0 +1,40 @@
+.sidebar {
+    width: 250px;
+    background-color: #dadada;
+    color: black;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navList {
+    list-style-type: none;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.navItem {
+    margin: 20px 0;
+}
+
+.navItem a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navItem a.active {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.slidebarItemName {
+    margin-left: 3px;
+}
+
+.hoverEffct:hover {
+    opacity: 0.7;
+}

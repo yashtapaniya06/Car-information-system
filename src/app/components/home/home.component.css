@@ -1,0 +1,140 @@
+
+/* Slideshow Styles */
+.slide-container {
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  animation: hero-continuous-scroll 40s linear infinite;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-slide-container {
+  width: 100%;
+  /* max-width: px; */
+  margin: 32px auto 0;
+  overflow: hidden;
+}
+
+.brand-slide-wrapper {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  animation: continuous-scroll 20s linear infinite;
+}
+
+.brand-slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+@keyframes continuous-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes hero-continuous-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-400%);
+  }
+}
+
+/* Content Styles */
+.homepage-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.featured-cars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.featured-cars h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.car-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.car-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+}
+
+.car-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.car-card p {
+  margin: 0;
+  color: #666;
+  font-weight: 500;
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.view-all-btn:hover {
+  background-color: #0056b3;
+}

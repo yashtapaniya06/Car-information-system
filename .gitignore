@@ -1,0 +1,69 @@
+# Node modules
+node_modules/
+
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+jspm_packages/
+
+# IDE files
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Angular
+.angular/
+dist/
+coverage/
+
+# Environment files
+.env
+.env.*
+
+# Compiled output
+out-tsc/
+
+# Firebase local emulator
+firebase-debug.log
+.firebaserc.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+
+# Generated files
+package-lock.json
+
+# Angular build artifacts
+*.js
+*.js.map
+*.tsbuildinfo
+
+# Firebase service account
+backend/serviceAccountKey.json
+
+# Temporary
+tmp/
+temp/
+
+# IDE and editor folders
+.idea/
+*.iml
+
+# Mac
+*.DS_Store
+
+# Windows
+Thumbs.db

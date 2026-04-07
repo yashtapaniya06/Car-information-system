@@ -1,0 +1,18 @@
+<div class="car-container" (click)="handleViewMore()">
+    <img class="car-image" [src]="image[0]" [alt]="title" />
+
+    <h3 class="car-title">{{ title }}</h3>
+
+    <p class="aboutCar">Price: {{ price }}</p>
+    <p class="aboutCar">Year: {{ year }}</p>
+    <p class="aboutCar">Fuel Type: {{ fuelType }}</p>
+    <p class="aboutCar">Mileage: {{ mileage }}</p>
+
+    <p class="carDescription">
+        {{ truncate(description, 50) }}
+    </p>
+
+    <button class="view-more-btn" (click)="$event.stopPropagation(); handleViewMore()">
+        View More
+    </button>
+</div>

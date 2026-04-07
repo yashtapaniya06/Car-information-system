@@ -1,0 +1,247 @@
+<div class="add-car-container">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">
+        <span class="title-icon">🚗</span>
+        Add New Car
+      </h1>
+      <p class="page-subtitle">Add a new vehicle to your fleet</p>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <!-- Removed loading state as it's not present in the original code -->
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit()" class="car-form">
+      <div class="form-grid">
+        <!-- Left Column -->
+        <div class="form-left">
+          <!-- Model Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🏷️</span>
+              Model:
+            </label>
+            <input type="text" formControlName="model" class="form-input" (blur)="checkModelAvailability()" />
+            <div class="error-message" *ngIf="f.model.touched && f.model.errors?.['required']">Model is required</div>
+            <div class="error-message" *ngIf="f.model.errors?.['exists']">Model already exists</div>
+          </div>
+
+          <!-- Brand Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🏭️</span>
+              Brand:
+            </label>
+            <input type="text" formControlName="brand" class="form-input" />
+            <div class="error-message" *ngIf="f.brand.touched && f.brand.errors?.['required']">Brand is required</div>
+          </div>
+
+          <!-- Price Range Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">💰</span>
+              Price Range:
+            </label>
+            <select formControlName="priceRange" class="form-select">
+              <option value="">Select Price Range</option>
+              <option value="1-5">1-5 Lakhs</option>
+              <option value="5-10">5-10 Lakhs</option>
+              <option value="10-15">10-15 Lakhs</option>
+              <option value="15-20">15-20 Lakhs</option>
+              <option value="20-30">20-30 Lakhs</option>
+              <option value="30-50">30-50 Lakhs</option>
+              <option value="50+">50+ Lakhs</option>
+            </select>
+            <div class="error-message" *ngIf="f.priceRange.touched && f.priceRange.errors?.['required']">Price range is required</div>
+          </div>
+
+          <!-- Year Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">📅</span>
+              Year:
+            </label>
+            <input type="number" formControlName="year" class="form-input" min="1900" />
+            <div class="error-message" *ngIf="f.year.touched && f.year.errors">{{ f.year.errors | json }}</div>
+          </div>
+
+          <!-- Fuel Type Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">⛽</span>
+              Fuel Types (Select all that apply):
+            </label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" 
+                  [checked]="isFuelTypeSelected('Electric')" 
+                  (change)="onFuelTypeChange($event, 'Electric')" />
+                <span class="checkbox-text">⚡ Electric</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" 
+                  [checked]="isFuelTypeSelected('Petrol')" 
+                  (change)="onFuelTypeChange($event, 'Petrol')" />
+                <span class="checkbox-text">⛽ Petrol</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" 
+                  [checked]="isFuelTypeSelected('Diesel')" 
+                  (change)="onFuelTypeChange($event, 'Diesel')" />
+                <span class="checkbox-text">🛢️ Diesel</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Transmission Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">⚙️</span>
+              Transmission:
+            </label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" value="Automatic" formControlName="transmission" />
+                <span class="radio-text">🔄 Automatic</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" value="Manual" formControlName="transmission" />
+                <span class="radio-text">👊 Manual</span>
+              </label>
+            </div>
+            <div class="error-message" *ngIf="f.transmission.touched && f.transmission.errors">Transmission is required</div>
+          </div>
+
+          <!-- Seating Capacity Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">👥</span>
+              Seating Capacity:
+            </label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" value="5" formControlName="seatingCapacity" />
+                <span class="radio-text">5 Seats</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" value="7" formControlName="seatingCapacity" />
+                <span class="radio-text">7 Seats</span>
+              </label>
+            </div>
+            <div class="error-message" *ngIf="f.seatingCapacity.touched && f.seatingCapacity.errors">Seating required</div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="form-right">
+          <!-- Body Type Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🚗</span>
+              Body Type:
+            </label>
+            <input type="text" formControlName="bodyType" class="form-input" />
+            <div class="error-message" *ngIf="f.bodyType.touched && f.bodyType.errors">Body type is required</div>
+          </div>
+
+          <!-- Mileage Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">📏</span>
+              Mileage (km/l):
+            </label>
+            <input type="text" formControlName="mileage" class="form-input" />
+            <div class="error-message" *ngIf="f.mileage.touched && f.mileage.errors">Mileage is required</div>
+          </div>
+
+          <!-- Engine Capacity Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">⚡</span>
+              Engine Capacity (cc):
+            </label>
+            <input type="text" formControlName="engineCapacity" class="form-input" />
+            <div class="error-message" *ngIf="f.engineCapacity.touched && f.engineCapacity.errors">Engine capacity is required</div>
+          </div>
+
+          <!-- Boot Space Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🧳</span>
+              Boot Space (liters):
+            </label>
+            <input type="number" formControlName="bootSpace" class="form-input" />
+            <div class="error-message" *ngIf="f.bootSpace.touched && f.bootSpace.errors">{{ f.bootSpace.errors | json }}</div>
+          </div>
+
+          <!-- Safety Features Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🛡️</span>
+              Safety Features:
+            </label>
+            <input type="text" formControlName="safetyFeatures" class="form-input" placeholder="e.g., ABS, Airbags, etc." />
+          </div>
+
+          <!-- Features Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">✨</span>
+              Features:
+            </label>
+            <input type="text" formControlName="features" class="form-input" placeholder="e.g., Sunroof, GPS, etc." />
+          </div>
+
+          <!-- Warranty Field -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">📋</span>
+              Warranty:
+            </label>
+            <input type="text" formControlName="warranty" class="form-input" placeholder="e.g., 3 years, 100k km" />
+          </div>
+
+          <!-- Description Field -->
+          <div class="form-group full-width">
+            <label class="form-label">
+              <span class="label-icon">📝</span>
+              Description:
+            </label>
+            <textarea formControlName="description" class="form-textarea" rows="4" placeholder="Enter detailed description about the car, its features, performance, etc."></textarea>
+            <div class="error-message" *ngIf="f.description.touched && f.description.errors?.['required']">Description is required</div>
+          </div>
+
+          <!-- Image URL Fields -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🖼️</span>
+              Image URL:
+            </label>
+            <input type="text" formControlName="image1" class="form-input" placeholder="https://example.com/car1.jpg" />
+            <div class="error-message" *ngIf="f.image1.touched && f.image1.errors?.['required']">Image URL is required</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-icon">🖼️</span>
+              Image2 URL:
+            </label>
+            <input type="text" formControlName="image2" class="form-input" placeholder="https://example.com/car2.jpg" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="button" class="submit-btn" (click)="onSubmit()">
+          <span class="btn-icon">➕</span>
+          <span class="btn-text">Add Car</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

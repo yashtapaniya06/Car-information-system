@@ -1,0 +1,18 @@
+<div class="car-card" (click)="handleViewMore()">
+    <img class="car-image" [src]="image && image.length > 0 ? image[0] : ''" [alt]="title" />
+
+    <h3 class="car-title">{{ title }}</h3>
+
+    <p class="aboutCar"><strong>Price:</strong> {{ price }}</p>
+    <p class="aboutCar"><strong>Year:</strong> {{ year }}</p>
+    <p class="aboutCar"><strong>Fuel Type:</strong> {{ fuelType }}</p>
+    <p class="aboutCar"><strong>Mileage:</strong> {{ mileage }}</p>
+
+    <p class="carDescription">
+        {{ truncate(description, 50) }}
+    </p>
+
+    <button class="view-more-btn" (click)="$event.stopPropagation(); handleViewMore()">
+        View More
+    </button>
+</div>

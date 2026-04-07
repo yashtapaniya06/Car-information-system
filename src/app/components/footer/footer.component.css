@@ -1,0 +1,132 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footerIcons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 30px;
+}
+
+.fIcon {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.carsIcon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.fIcon h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.fIcon p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.svg {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.svg a {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.svg a:hover {
+  color: #007bff;
+}
+
+/* Social specific hover colors */
+.instagram:hover {
+  color: #E1306C;
+}
+
+.twitter:hover {
+  color: #1DA1F2;
+}
+
+.facebook:hover {
+  color: #1877F2;
+}
+
+.linkedin:hover {
+  color: #0077B5;
+}
+
+.github:hover {
+  color: #333;
+}
+
+.footerAbout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.footerLinks a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footerLinks a:hover {
+  color: #007bff;
+}
+
+.footerLogo .LogoImg {
+  height: 50px;
+  width: auto;
+}
+
+.FooterLastText {
+  text-align: center;
+  color: #666;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .footerIcons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footerAbout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

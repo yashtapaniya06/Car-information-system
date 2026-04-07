@@ -1,0 +1,91 @@
+/* Single car / hero styles */
+
+/* Styling converted from React inline styles and car-card.component.css */
+.car-container {
+  width: 250px;
+  height: 450px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.car-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.car-title {
+  margin: 16px 0 8px;
+  font-size: 18px;
+  color: #333;
+}
+
+.aboutCar {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.carDescription {
+  font-size: 14px;
+  color: #777;
+  margin: 8px 0;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.view-more-btn {
+  width: 50%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.view-more-btn:hover {
+  background-color: #0056b3;
+}
+/* 
+.carFirst {
+  background: url(https://img.freepik.com/premium-photo/happy-family-with-car-travel-summer-vacation-car-sunset_76964-24706.jpg?w=996);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 65vh;
+}
+
+.searchCar {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.searchDetail {
+  display: flex;
+  width: 55%;
+  padding: 30px;
+  background: rgba(245, 222, 179, 0.733);
+  border-radius: 20px 10px;
+} */

@@ -1,0 +1,76 @@
+<div class="cars-list">
+  <h2>All Cars</h2>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <h3>Filter Cars</h3>
+    <div class="filter-grid">
+      <!-- Brand Filter -->
+      <div class="filter-group">
+        <label for="brandFilter">Brand Name:</label>
+        <select id="brandFilter" [(ngModel)]="selectedBrand" (change)="onBrandChange()" class="filter-select">
+          <option value="">All Brands</option>
+          @for (brand of brands; track brand) {
+            <option [value]="brand">{{ brand }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Model Filter -->
+      <div class="filter-group">
+        <label for="modelFilter">Model Name:</label>
+        <select id="modelFilter" [(ngModel)]="selectedModel" (change)="applyFilters()" class="filter-select">
+          <option value="">All Models</option>
+          @for (model of models; track model) {
+            <option [value]="model">{{ model }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Fuel Type Filter -->
+      <div class="filter-group">
+        <label for="fuelTypeFilter">Fuel Type:</label>
+        <select id="fuelTypeFilter" [(ngModel)]="selectedFuelType" (change)="applyFilters()" class="filter-select">
+          <option value="">All Fuel Types</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Electric">Electric</option>
+        </select>
+      </div>
+
+      <!-- Price Range Filter -->
+      <div class="filter-group">
+        <label for="priceRangeFilter">Price Range:</label>
+        <select id="priceRangeFilter" [(ngModel)]="selectedPriceRange" (change)="applyFilters()" class="filter-select">
+          <option value="">All Prices</option>
+          <option value="1-10">1-10 Lakh</option>
+          <option value="11-20">11-20 Lakh</option>
+        </select>
+      </div>
+
+      <!-- Clear Filters Button -->
+      <div class="filter-group">
+        <button type="button" class="clear-btn" (click)="clearFilters()">Clear Filters</button>
+      </div>
+    </div>
+  </div>
+
+  @if (loading) {
+    <div class="Loading">Loading...</div>
+  } @else {
+    <div class="car-grid">
+      @for (car of paginatedCars; track car.id) {
+        <div class="car-card">
+          <img *ngIf="car.image && car.image.length"
+               [src]="car.image[0]"
+               [alt]="car.model"
+               style="width:100%; height:180px; object-fit:cover;" />
+          <h3>{{ car.brand }} - {{ car.model }}</h3>
+          <p class="aboutCar">{{ car.price }}</p>
+          <p class="aboutCar">{{ car.brand }}</p>
+          <button type="button" class="Btn" (click)="viewCar(car)">View</button>
+        </div>
+      }
+    </div>
+  }
+</div>

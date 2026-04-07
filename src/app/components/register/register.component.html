@@ -1,0 +1,44 @@
+<div class="sign">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form" autocomplete="off">
+        <input class="autofill-blocker" type="text" autocomplete="username" tabindex="-1" aria-hidden="true" />
+        <input class="autofill-blocker" type="password" autocomplete="new-password" tabindex="-1"
+            aria-hidden="true" />
+        <h1>Create Your Account</h1>
+
+        <label for="userName">Username:</label>
+        <input class="inputFeild" type="text" id="userName" placeholder="Enter Your Name" formControlName="userName"
+            autocomplete="off" autocapitalize="off" spellcheck="false" name="register-user-name" />
+        <span class="errorMsg"
+            *ngIf="signUpForm.get('userName')?.invalid && (signUpForm.get('userName')?.dirty || signUpForm.get('userName')?.touched)">
+            Username is required
+        </span>
+
+        <label for="email">Email:</label>
+        <input class="inputFeild" type="email" id="email" placeholder="Enter Email Address" formControlName="email"
+            autocomplete="off" autocapitalize="off" spellcheck="false" name="register-email" />
+        <span class="errorMsg"
+            *ngIf="signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty || signUpForm.get('email')?.touched)">
+            Email is required
+        </span>
+
+        <label for="password">Password:</label>
+        <input class="inputFeild" type="password" id="password" placeholder="••••••••••••••••"
+            formControlName="password" autocomplete="new-password" name="register-password" />
+        <span class="errorMsg"
+            *ngIf="signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)">
+            Password is required
+        </span>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input class="inputFeild" type="password" id="confirmPassword" placeholder="Re-Enter Password"
+            formControlName="confirmPassword" autocomplete="new-password" name="register-confirm-password" />
+        <span class="errorMsg"
+            *ngIf="signUpForm.get('confirmPassword')?.invalid && (signUpForm.get('confirmPassword')?.dirty || signUpForm.get('confirmPassword')?.touched)">
+            Confirm Password is required
+        </span>
+
+        <div>
+            <button type="submit" class="Btn" [disabled]="signUpForm.invalid">Sign Up</button>
+        </div>
+    </form>
+</div>

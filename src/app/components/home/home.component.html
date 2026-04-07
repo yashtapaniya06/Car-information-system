@@ -1,0 +1,59 @@
+<!-- ================= HERO SLIDESHOW (FULL-WIDTH) ================= -->
+<div class="slide-container">
+  <div class="slide-wrapper">
+    <div class="slide" *ngFor="let slide of slideImages" [style.backgroundImage]="'url(' + slide.url + ')'">
+    </div>
+  </div>
+</div>
+
+<!-- ================= FEATURED CARS SECTION ================= -->
+<div class="homepage-content">
+
+  <section class="featured-cars">
+    <h2>Featured Cars This Week</h2>
+
+    <!-- If Cars Available -->
+    <div *ngIf="featuredCars && featuredCars.length > 0; else noCars">
+      <div class="car-grid">
+
+        <div class="car-card" *ngFor="let car of featuredCars" (click)="viewCarDetails(car)">
+          <h3>{{ car.brand }} {{ car.model }}</h3>
+          <p *ngIf="car.price && car.year">
+            ₹{{ car.price }} - {{ car.year }} Model
+          </p>
+          <p *ngIf="!car.price">
+            Premium Performance Vehicle
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- If No Cars -->
+    <ng-template #noCars>
+      <p style="text-align:center; margin-top:20px;">
+        No featured cars available right now.
+      </p>
+    </ng-template>
+
+    <div style="text-align:center; margin-top:20px;">
+      <a routerLink="/cars" routerlinkactive="active" class="view-all-btn">
+        View All Cars →
+      </a>
+    </div>
+
+    <!-- Brand slideshow just below the button -->
+    <div class="brand-slide-container">
+      <div class="brand-slide-wrapper">
+        <div class="brand-slide" *ngFor="let slide of brandSlides" [style.backgroundImage]="'url(' + slide.url + ')'">
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+
+
+
+<!-- Rating analysis section removed as requested -->

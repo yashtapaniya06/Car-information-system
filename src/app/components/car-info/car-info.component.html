@@ -1,0 +1,229 @@
+<div class="carinfoIinks">
+
+  <nav class="breadcrumb">
+    <a routerLink="/">Home</a> /
+    <a routerLink="/cars">Car</a> /
+    @if(car){
+    <span>{{car.brand}} {{car.model}}</span>
+    }
+  </nav>
+
+</div>
+
+
+@if (loading || !authChecked) {
+<div class="Loading">
+  <div class="spinner"></div>
+</div>
+}
+
+
+@if (!loading && car) {
+
+<div class="carinfoContainer">
+
+  <div class="mainContentContainer">
+
+
+    <!-- Image Slider -->
+
+    <div class="imageContainer slider-box">
+
+      <button class="slider-nav" (click)="prevImage()">❮</button>
+
+      <img [src]="car.image[currentImageIndex]" class="carinfoImage" />
+
+      <button class="slider-nav" (click)="nextImage()">❯</button>
+
+    </div>
+
+
+    <!-- Car Details -->
+
+    <div class="carDetailsContainer">
+
+      <h2>{{car.brand}} {{car.model}}</h2>
+
+      <p>Price: {{car.price}}</p>
+
+      <p>{{car.description}}</p>
+
+
+      <!-- ⭐ Rating System -->
+
+      <div class="ratingStars">
+
+        <h3>Rate this Car</h3>
+
+        <p class="averageRating">
+
+          Average Rating :
+
+          @if(averageRating > 0){
+          <strong>{{averageRating | number:'1.1-1'}} / 5</strong>
+          }
+
+          @if(averageRating == 0){
+          <strong>No Rating Yet</strong>
+          }
+
+        </p>
+
+
+        <div class="stars">
+
+          <span *ngFor="let star of stars" (click)="onStarClick(star)" [class.filled]="star <= rating" >
+            ★
+          </span>
+
+        </div>
+
+        <p>Your Rating : {{rating}}</p>
+
+      </div>
+
+      @if(!isLoggedIn){
+      <p>Please login to rate this car</p>
+      }
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Additional Info -->
+
+  <div class="additionalInfoContainer">
+
+    <div class="infoItem">
+      <strong>Fuel Type:</strong> {{car.fuelType}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Mileage:</strong> {{car.mileage}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Transmission:</strong> {{car.transmission}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Engine:</strong> {{car.engineCapacity}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Seating:</strong> {{car.seatingCapacity}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Body Type:</strong> {{car.bodyType}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Boot Space:</strong> {{car.bootSpace}} liters
+    </div>
+
+    <div class="infoItem">
+      <strong>Features:</strong> {{car.features}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Safety Features:</strong> {{car.safetyFeatures}}
+    </div>
+
+    <div class="infoItem">
+      <strong>Warranty:</strong> {{car.warranty}}
+    </div>
+  </div>
+
+
+</div>
+
+}
+<!-- <div class="carinfoIinks">
+  <nav class="breadcrumb">
+    <a routerLink="/" class="carInfoLink">Home</a> /
+    <a routerLink="/cars" class="carInfoLink">Car</a> /
+    @if (car) {
+    <span>{{ car.brand }} {{ car.model }}</span>
+    }
+  </nav>
+</div> -->
+
+<!-- Loading States -->
+<!-- @if (loading || !authChecked) {
+<div class="Loading">
+  <div class="spinner"></div> 
+</div>
+} -->
+
+<!-- @if (!loading && authChecked && !car) {
+<div class="Loading">
+  <p>Car details not found.</p>
+</div>
+} -->
+
+<!-- Main Content -->
+<!-- @if (!loading && car) {
+<div class="carinfoContainer">
+  <div class="mainContentContainer">
+
+    <div class="imageContainer slider-box">
+      <button class="slider-nav" (click)="prevImage()">&#10094;</button>
+      <img [src]="car.image[currentImageIndex]" [alt]="car.model" class="carinfoImage" />
+      <button class="slider-nav" (click)="nextImage()">&#10095;</button>
+      <div class="bullets">
+        @for (img of car.image; track $index; let i = $index) {
+        <span [class.active]="i === currentImageIndex"></span>
+        }
+      </div>
+    </div>
+
+    <div class="carDetailsContainer">
+      <h2 class="carinfoTitle">{{ car.brand }} {{ car.model }}</h2>
+      <p class="carinfoPrice">Price: {{ car.price }}</p>
+      <p class="carinfoDescription">{{ car.description }}</p>
+
+
+      @if (userId) {
+      <div class="ratingStars">
+        <h3>Rate this Car:</h3>
+        <p class="averageRating">
+          Average Rating:
+          @if (averageRating > 0) {
+          <strong>{{ averageRating | number:'1.1-1' }}/5</strong>
+          } @else {
+          <strong>Not rated yet</strong>
+          }
+        </p>
+        <div class="rating">
+          <span *ngFor="let star of stars; let i = index" (click)="rate(i + 1)" [class.filled]="i < rating">
+            ★
+          </span>
+      </div>
+        <p>Your Rating: {{ rating }}</p>
+      </div>
+      }
+      
+      @if (!userId) {
+      <p>Please log in to rate this car.</p>
+      }
+    </div>
+  </div>
+
+
+  <div class="additionalInfoContainer">
+    <div class="infoItem"><strong>Fuel Type:</strong> <span>{{ car.fuelType }}</span></div>
+    <div class="infoItem"><strong>Mileage:</strong> <span>{{ car.mileage }}</span></div>
+    <div class="infoItem"><strong>Transmission:</strong> <span>{{ car.transmission }}</span></div>
+    <div class="infoItem"><strong>Engine Capacity:</strong> <span>{{ car.engineCapacity }}</span></div>
+    <div class="infoItem"><strong>Seating:</strong> <span>{{ car.seatingCapacity }} people</span></div>
+    <div class="infoItem"><strong>Body Type:</strong> <span>{{ car.bodyType }}</span></div>
+    <div class="infoItem"><strong>Safety:</strong> <span>{{ car.safetyFeatures.join(", ") }}</span></div>
+    <div class="infoItem"><strong>Boot Space:</strong> <span>{{ car.bootSpace }} liters</span></div>
+    <div class="infoItem"><strong>Features:</strong> <span>{{ car.features.join(", ") }}</span></div>
+    <div class="infoItem"><strong>Warranty:</strong> <span>{{ car.warranty }}</span></div>
+  </div>
+</div>
+} -->

@@ -1,0 +1,218 @@
+/* Using rules from src/angular-styles/rating-analysis.component.css */
+.RatingContainer {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cra {
+  border-bottom: 2px solid gray;
+  margin-bottom: 25px;
+}
+
+.topRatedCarsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.ratedCarCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+}
+
+.ratedCarCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  color: white;
+}
+
+.badge.gold {
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.badge.silver {
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);
+}
+
+.badge.bronze {
+  background: linear-gradient(135deg, #cd7f32, #8b4513);
+  box-shadow: 0 2px 8px rgba(205, 127, 50, 0.4);
+}
+
+.car-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-image {
+  color: #999;
+  font-size: 14px;
+}
+
+.car-info {
+  padding: 20px;
+}
+
+.car-info h2 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  color: #333;
+}
+
+.price {
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 8px 0 15px 0;
+}
+
+.rating-section {
+  margin: 15px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.star {
+  font-size: 20px;
+  color: #ddd;
+}
+
+.star.filled {
+  color: #ffd700;
+  text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
+}
+
+.rating-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 5px 0;
+}
+
+.rating-count {
+  font-size: 12px;
+  color: #888;
+  margin: 8px 0 0 0;
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.topCars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.PieChart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topCarsSection {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.topCarsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 25px;
+}
+
+.topCarItem {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+}
+
+.allCarsSection {
+  margin-top: 40px;
+}
+
+.RatingTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ratingTblHeading {
+  padding: 10px;
+  font-weight: 900;
+  font-size: larger;
+  background-color: #eee;
+}
+
+.RatingTable td {
+  padding: 10px;
+  text-align: center;
+}

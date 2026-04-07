@@ -1,0 +1,60 @@
+<div *ngIf="!car" class="loading">Loading car details...</div>
+
+<div class="container" *ngIf="car">
+    <div class="mainContentContainer">
+        <div class="imageContainer">
+            <img [src]="car.image" [alt]="car.model" class="image" />
+        </div>
+        <div class="carDetailsContainer">
+            <h2 class="title">{{ car.brand }} {{ car.model }}</h2>
+            <p class="price">Price: {{ car.price }}</p>
+            <p class="description">{{ car.description }}</p>
+
+            <!-- Rating system -->
+            <div class="ratingContainer" *ngIf="userId">
+                <h3>Rate this Car:</h3>
+                <div class="stars">
+                    <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="onStarClick(star)"
+                        [class.active]="star <= rating" class="star">
+                        ★
+                    </span>
+                </div>
+            </div>
+            <p *ngIf="!userId">Please log in to rate this car.</p>
+        </div>
+    </div>
+
+    <!-- Additional car info -->
+    <div class="additionalInfoContainer">
+        <div class="infoItem">
+            <strong>Fuel Type:</strong> <span>{{ car.fuelType }}</span>
+        </div>
+        <div class="infoItem">
+            <strong>Mileage:</strong> <span>{{ car.mileage }}</span>
+        </div>
+        <div class="infoItem">
+            <strong>Transmission:</strong> <span>{{ car.transmission }}</span>
+        </div>
+        <div class="infoItem">
+            <strong>Engine Capacity:</strong> <span>{{ car.engineCapacity }}</span>
+        </div>
+        <div class="infoItem">
+            <strong>Seating Capacity:</strong> <span>{{ car.seatingCapacity }} people</span>
+        </div>
+        <div class="infoItem">
+            <strong>Body Type:</strong> <span>{{ car.bodyType }}</span>
+        </div>
+        <div class="infoItem">
+            <strong>Safety Features:</strong> <span>{{ car.safetyFeatures?.join(', ') }}</span>
+        </div>
+        <div class="infoItem">
+            <strong>Boot Space:</strong> <span>{{ car.bootSpace }} liters</span>
+        </div>
+        <div class="infoItem">
+            <strong>Additional Features:</strong> <span>{{ car.features?.join(', ') }}</span>
+        </div>
+        <div class="infoItem">
+            <strong>Warranty:</strong> <span>{{ car.warranty }}</span>
+        </div>
+    </div>
+</div>
